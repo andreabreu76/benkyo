@@ -111,7 +111,18 @@ server: {
 },
 ```
 
-Pronto agora sua aplicação e ambiente deve rodar como deseja, quaquer problema pode ser visto com logs do docker dentro do diretorio raiz do projeto com o comando.
+Pronto agora sua aplicação e ambiente deve rodar como deseja em:
+
+Frontend
+> http://localhost
+ 
+Backend
+> http://localhost/api/
+ 
+Banco de dados
+>mariadb://homestead:secret@localhost/homestead
+
+Quaquer problema pode ser visto com logs do docker dentro do diretorio raiz do projeto com o comando.
 
 ```bash
 docker logs <nome_do_container>
