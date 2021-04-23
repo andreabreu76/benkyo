@@ -1,0 +1,78 @@
+version: '3'
+services:
+
+    # The Backend Application
+    php:
+        build:
+            context: ./
+            dockerfile: php.dockerfile
+        image: andreabreu76/php7fpm-laravel8
+        container_name: backend 
+        working_dir: /var/www
+        command: ['bash','-c','php artisan serve --host=0.0.0.0 --port=8080' ]
+        volumes:
+            - ./php/:/var/www
+        environment:
+            DB_PORT: 3306
+            DB_HOST: mariadb
+        ports:
+            - 8080:8080
+        networks:
+            - benkyo_net
+    
+    # The Frontend Application        
+    nuxt:
+        build:
+            context: ./
+            dockerfile: nuxt.dockerfile
+        image: andreabreu76/nuxtjs2
+        container_name: frontend
+        working_dir: /home/node/app
+        command: ['bash','-c','yarn build && yarn start']
+        volumes:
+            - ./nuxt/:/home/node/app
+        ports:
+            - 3000:3000
+        networks:
+            - benkyo_net
+    
+    # The Web Server
+    web:
+        build:
+            context: ./
+            dockerfile: web.dockerfile
+        image: andreabreu76/nginx
+        container_name: host
+        working_dir: /var/www
+        ports:
+            - 80:80
+        depends_on:
+            - php
+            - nuxt
+        networks:
+            - benkyo_net
+
+    # The Database
+    mariadb:
+        build:
+            context: ./
+            dockerfile: mariadb.dockerfile
+        image: andreabreu76/mariadb
+        container_name: database
+        volumes:
+            - dbdata:/var/lib/mysql
+        environment:
+            - "MYSQL_DATABASE=homestead"
+            - "MYSQL_USER=homestead"
+            - "MYSQL_PASSWORD=secret"
+            - "MYSQL_ROOT_PASSWORD=secret"
+        ports:
+            - "3306:3306"
+        networks:
+            - benkyo_net
+    
+volumes:
+    dbdata:
+networks:
+    benkyo_net:
+        driver: "bridge"
