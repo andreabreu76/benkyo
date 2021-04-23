@@ -115,10 +115,10 @@ Pronto agora sua aplicação e ambiente deve rodar como deseja em:
 
 Frontend
 > http://localhost
- 
+
 Backend
-> http://localhost/api/
- 
+> http://localhost/srv/
+
 Banco de dados
 >mariadb://homestead:secret@localhost/homestead
 
