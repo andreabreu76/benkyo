@@ -1,3 +1,6 @@
+/.idea
+/.vscode
+
 ### Node template
 nuxt/logs
 nuxt/*.log
