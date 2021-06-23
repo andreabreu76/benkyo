@@ -114,10 +114,10 @@ server: {
 Pronto agora sua aplicação e ambiente deve rodar como deseja em:
 
 Frontend
-> http://localhost
+>
 
 Backend
-> http://localhost/srv/
+>
 
 Banco de dados
 >mariadb://homestead:secret@localhost/homestead
@@ -143,3 +143,5 @@ docker logs --folow <id_do_conteiner>
 O id do conteiner pode ser obtido com o comando `docker ps`
 
 Aproveite.
+
+Meu contato é andreabreu@gmail.com
