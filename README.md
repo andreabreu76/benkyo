@@ -144,4 +144,4 @@ O id do conteiner pode ser obtido com o comando `docker ps`
 
 Aproveite.
 
-Meu contato é andreabreu@gmail.com
+Meu contato é andre.abreu@gmail.com
